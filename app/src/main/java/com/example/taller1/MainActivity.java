@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     Spinner spinner;
     ArrayList<Integer> opciones;
     Button factorial,fibonacci;
+    EditText text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +27,9 @@ public class MainActivity extends AppCompatActivity {
         spinner = findViewById(R.id.spinner);
         factorial = findViewById(R.id.FactorialBtn);
         fibonacci = findViewById(R.id.FibonacciBtn);
+        text = findViewById(R.id.numeroFibonacci);
 
         fillArray();
-
-
 
         ArrayAdapter<Integer> arrayAdapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item, opciones);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -43,6 +44,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        fibonacci.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(),FibonacciActivity.class);
+                intent.putExtra("nivelfibo",text.toString());
+                startActivity(intent);
+            }
+        });
 
     }
 
