@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -16,7 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
     Spinner spinner;
     ArrayList<Integer> opciones;
-    Button factorial,fibonacci,paises;
+    Button factorial,fibonacci;
+    EditText text;
+    Button paises;
     TextView contFactorial;
     int contadorFactorial = 0;
 
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         factorial = findViewById(R.id.FactorialBtn);
         fibonacci = findViewById(R.id.FibonacciBtn);
         paises = findViewById(R.id.paises);
+        text = findViewById(R.id.numeroFibonacci);
 
         fillArray();
 
@@ -53,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        fibonacci.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(),FibonacciActivity.class);
+                intent.putExtra("nivelfibo",Integer.parseInt(text.getText().toString()));
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -66,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void fillArray() {
         opciones = new ArrayList<>();
-        for (int i=1;i<16;i++){
+        for (int i=0;i<16;i++){
             opciones.add(i);
         }
 
