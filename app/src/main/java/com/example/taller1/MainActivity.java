@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
         fillArray();
 
+
+
         ArrayAdapter<Integer> arrayAdapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item, opciones);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
