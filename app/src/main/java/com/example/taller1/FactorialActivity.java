@@ -19,5 +19,6 @@ public class FactorialActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String factorial = intent.getStringExtra("factorial");
         resultado.setText(factorial);
+
     }
 }

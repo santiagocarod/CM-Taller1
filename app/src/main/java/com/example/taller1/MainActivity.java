@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getBaseContext(),FibonacciActivity.class);
-                intent.putExtra("nivelfibo",text.toString());
+                intent.putExtra("nivelfibo",Integer.parseInt(text.getText().toString()));
                 startActivity(intent);
             }
         });
