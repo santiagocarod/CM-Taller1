@@ -3,8 +3,11 @@ package com.example.taller1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,6 +16,7 @@ import org.w3c.dom.Text;
 public class FibonacciActivity extends AppCompatActivity {
 
     LinearLayout pantalla;
+    ImageButton btnImagen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +24,16 @@ public class FibonacciActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fibonacci);
 
         pantalla = findViewById(R.id.meterTexto);
+        btnImagen = findViewById(R.id.imageURL);
+
+        btnImagen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("https://es.wikipedia.org/wiki/Sucesi%C3%B3n_de_Fibonacci");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
 
         Intent intent = getIntent();
         int cantfibo = intent.getIntExtra("nivelfibo", 1);
