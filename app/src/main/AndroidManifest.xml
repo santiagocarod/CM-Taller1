@@ -13,9 +13,7 @@
         <activity android:name=".detailActivity"></activity>
         <activity android:name=".PaisesActivity" />
         <activity android:name=".FactorialActivity" />
-        android:theme="@style/AppTheme">
         <activity android:name=".FibonacciActivity"></activity>
-        <activity android:name=".FactorialActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

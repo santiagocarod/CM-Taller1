@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Integer> opciones;
     Button factorial,fibonacci;
     EditText text;
-    Button factorial,fibonacci,paises;
+    Button paises;
     TextView contFactorial;
     int contadorFactorial = 0;
 
