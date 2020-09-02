@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void fillArray() {
         opciones = new ArrayList<>();
-        for (int i=0;i<16;i++){
+        for (int i=1;i<16;i++){
             opciones.add(i);
         }
 

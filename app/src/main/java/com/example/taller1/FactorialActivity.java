@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 public class FactorialActivity extends AppCompatActivity {
@@ -18,6 +19,24 @@ public class FactorialActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String factorial = intent.getStringExtra("factorial");
-        resultado.setText(factorial);
+
+
+        String valorResultado = calcularFactorial(factorial);
+        resultado.setText(valorResultado);
+
+    }
+
+    private String calcularFactorial(String factorial) {
+        int valor = Integer.parseInt(factorial);
+        String retorno = factorial+"! = ";
+        int acumulado = 1;
+
+        for(int i=valor;i>0;i--){
+            acumulado = acumulado * i;
+            retorno += String.valueOf(i) +"*";
+        }
+        retorno = retorno.substring(0,retorno.length()-1);
+        retorno += "\nEl resultado es: "+ acumulado;
+        return retorno;
     }
 }
