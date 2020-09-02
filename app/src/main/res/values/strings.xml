@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Taller1</string>
+    <string name="Taller1">Taller 1</string>
+    <string name="factorial">Factorial</string>
+    <array name="valoresFactorial">
+        <item>1</item>
+    </array>
+</resources>
