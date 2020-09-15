@@ -11,7 +11,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,8 +22,13 @@ public class MainActivity extends AppCompatActivity {
     Button factorial,fibonacci;
     EditText text;
     Button paises;
-    TextView contFactorial;
+    TextView contFactorial, fechaFactorial;
     int contadorFactorial = 0;
+    private Calendar calendar;
+    private SimpleDateFormat dateFormat;
+    private String dateFact;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
         fibonacci = findViewById(R.id.FibonacciBtn);
         paises = findViewById(R.id.paises);
         text = findViewById(R.id.numeroFibonacci);
+
+
+
 
         fillArray();
 
@@ -47,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("factorial",spinner.getSelectedItem().toString());
                 startActivity(intent);
                 contadorFactorial +=1;
+                calendar = Calendar.getInstance();
+                dateFormat = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
+                dateFact = dateFormat.format(calendar.getTime());
             }
         });
 
@@ -73,7 +86,12 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         contFactorial = findViewById(R.id.contFactorial);
+        fechaFactorial = findViewById(R.id.fechaFactorial);
+
         contFactorial.setText("Factorial: " + String.valueOf(contadorFactorial));
+        if(dateFact != null) {
+            fechaFactorial.setText("Uso: " + dateFact);
+        }
     }
 
     private void fillArray() {
