@@ -23,10 +23,15 @@ public class MainActivity extends AppCompatActivity {
     EditText text;
     Button paises;
     TextView contFactorial, fechaFactorial;
+    TextView contFibonacci, fechaFibonacci;
     int contadorFactorial = 0;
+    int contadorFibonacci = 0;
     private Calendar calendar;
+    private Calendar calendar2;
     private SimpleDateFormat dateFormat;
+    private SimpleDateFormat dateFormat2;
     private String dateFact;
+    private String dateFibo;
 
 
 
@@ -76,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getBaseContext(),FibonacciActivity.class);
                 intent.putExtra("nivelfibo",Integer.parseInt(text.getText().toString()));
                 startActivity(intent);
+                contadorFibonacci += 1;
+                calendar2 = Calendar.getInstance();
+                dateFormat2 = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
+                dateFibo = dateFormat2.format(calendar2.getTime());
             }
         });
 
@@ -88,9 +97,17 @@ public class MainActivity extends AppCompatActivity {
         contFactorial = findViewById(R.id.contFactorial);
         fechaFactorial = findViewById(R.id.fechaFactorial);
 
+        contFibonacci = findViewById(R.id.contFibonacci);
+        fechaFibonacci = findViewById(R.id.fechaFibonacci);
+
         contFactorial.setText("Factorial: " + String.valueOf(contadorFactorial));
         if(dateFact != null) {
             fechaFactorial.setText("Uso: " + dateFact);
+        }
+
+        contFibonacci.setText("Fibonacci: " + String.valueOf(contadorFibonacci));
+        if(dateFibo != null){
+            fechaFibonacci.setText("Uso: " + dateFibo);
         }
     }
 
@@ -99,7 +116,5 @@ public class MainActivity extends AppCompatActivity {
         for (int i=0;i<16;i++){
             opciones.add(i);
         }
-
     }
-
 }
