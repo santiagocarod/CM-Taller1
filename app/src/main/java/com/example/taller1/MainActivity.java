@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -78,13 +80,19 @@ public class MainActivity extends AppCompatActivity {
         fibonacci.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(),FibonacciActivity.class);
-                intent.putExtra("nivelfibo",Integer.parseInt(text.getText().toString()));
-                startActivity(intent);
-                contadorFibonacci += 1;
-                calendar2 = Calendar.getInstance();
-                dateFormat2 = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
-                dateFibo = dateFormat2.format(calendar2.getTime());
+                String number = text.getText().toString();
+                if (!number.equals("") && android.text.TextUtils.isDigitsOnly(number)) {
+                    Intent intent = new Intent(getBaseContext(), FibonacciActivity.class);
+                    intent.putExtra("nivelfibo", Integer.parseInt(number));
+                    startActivity(intent);
+                    contadorFibonacci += 1;
+                    calendar2 = Calendar.getInstance();
+                    dateFormat2 = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
+                    dateFibo = dateFormat2.format(calendar2.getTime());
+                }else{
+                    Toast toast = Toast.makeText(getBaseContext(),"Por favor ingrese un numero en Fibonacci",Toast.LENGTH_LONG);
+                    toast.show();
+                }
             }
         });
 
